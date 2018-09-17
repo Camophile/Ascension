@@ -6,6 +6,8 @@ public/lib/
 public/img/
 *.swp
 
+package-lock.json
+
 # OS metadata
 .DS_Store
 Thumbs.db
