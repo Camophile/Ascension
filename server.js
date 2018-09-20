@@ -21,8 +21,6 @@ const publicDir = `${__dirname}/public`;
 
 app.use(express.static(`${publicDir}/construction`));
 
-console.log('!!!!!!!! server.js homePage.goal', homePage, '\n');
-
 app.use('/no-view-mode', homePage);
 /* app.use('/', express.static(path.join(__dirname, '/public/construction'),
   {

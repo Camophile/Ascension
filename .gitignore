@@ -4,6 +4,8 @@ node_modules/
 
 public/lib/
 public/img/
+public/construction/assets/fonts/
+public/construction/assets/img
 *.swp
 
 package-lock.json
