@@ -3,9 +3,12 @@
  */
 const express = require('express');
 const path = require('path');
+const homePage = require('./public/app');
 const router = express.Router();
 
 const app = express();
+
+const publicDir = `${__dirname}/public`;
 
 // add string concat to specify if index moved to diff dir
 
@@ -16,10 +19,13 @@ const app = express();
   outputStyle: 'expanded',
 })); */
 
-app.use('/', express.static(path.join(__dirname, '/public'),
+app.use(express.static(`${publicDir}/construction`));
+
+app.use('/no-view-mode', homePage);
+/* app.use('/', express.static(path.join(__dirname, '/public/construction'),
   {
     extensions:['html'],
   })
-);
+); */
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
