@@ -8,8 +8,6 @@ public/construction/assets/fonts/
 public/construction/assets/img
 *.swp
 
-package-lock.json
-
 # OS metadata
 .DS_Store
 Thumbs.db
