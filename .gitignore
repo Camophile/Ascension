@@ -2,6 +2,7 @@ node_modules/
 
 .env
 
+public/dist/
 public/lib/
 public/img/
 public/construction/assets/fonts/
