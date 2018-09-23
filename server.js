@@ -5,7 +5,7 @@ const express = require('express');
 const hbs = require('express-handlebars');
 const path = require('path');
 
-const construction = require('./public/routes/index');
+const routes = require('./public/routes/index');
 const router = express.Router();
 
 const app = express();
@@ -38,7 +38,7 @@ app.set('view engine', 'hbs');
 
 app.use(express.static(publicDir));
 
-app.use('/construction', construction);
+app.use('/construction', routes);
 
 app.get('/', (req, res) => {
   res.render('homepage/index', {
