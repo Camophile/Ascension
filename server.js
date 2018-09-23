@@ -5,7 +5,6 @@ const express = require('express');
 const hbs = require('express-handlebars');
 const path = require('path');
 
-const homePage = require('./public/app');
 const construction = require('./public/routes/index');
 const router = express.Router();
 
@@ -34,7 +33,7 @@ app.engine('hbs', hbs({
   partialsDir: `${__dirname}/public/views/partials`,
 }));
 
-app.set('views', `${__dirname}/public`);
+app.set('views', `${__dirname}/public/views`);
 app.set('view engine', 'hbs');
 
 app.use(express.static(publicDir));
@@ -42,7 +41,7 @@ app.use(express.static(publicDir));
 app.use('/construction', construction);
 
 app.get('/', (req, res) => {
-  res.render('home', {
+  res.render('homepage/index', {
     title: 'Ascension'
   });
 });
