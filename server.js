@@ -1,13 +1,14 @@
 /**
  * Module dependencies.
  */
-const express = require('express');
-const hbs = require('express-handlebars');
-const path = require('path');
+import express from 'express';
+import hbs from 'express-handlebars';
+import path from 'path';
 
-const routes = require('./public/routes/index');
-const router = express.Router();
+import home from './public/routes/home';
+import construction from './public/routes/construction';
 
+//const router = express.Router();
 const app = express();
 const publicDir = `${__dirname}/public`;
 
@@ -36,14 +37,11 @@ app.engine('hbs', hbs({
 app.set('views', `${__dirname}/public/views`);
 app.set('view engine', 'hbs');
 
+// Loads static assets from /public
 app.use(express.static(publicDir));
 
-app.use('/construction', routes);
-
-app.get('/', (req, res) => {
-  res.render('homepage/index', {
-    title: 'Ascension'
-  });
-});
+// Load subdirectories before home
+app.use('/construction', construction);
+app.use('/', home);
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
