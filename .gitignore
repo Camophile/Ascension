@@ -2,11 +2,11 @@ node_modules/
 
 .env
 
-public/dist/
-public/lib/
-public/img/
-public/construction/assets/fonts/
-public/construction/assets/img
+site/public/dist/
+site/public/lib/
+site/public/img/
+site/construction/assets/fonts/
+site/construction/assets/img
 *.swp
 
 # OS metadata

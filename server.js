@@ -5,10 +5,10 @@ import express from 'express';
 import hbs from 'express-handlebars';
 import path from 'path';
 
-import routes from './public/routes/index';
+import routes from './site/routes/index';
 
 const app = express();
-const publicDir = `${__dirname}/public`;
+const siteDir = `${__dirname}/site`;
 
 /*
  * view engine config
@@ -27,16 +27,16 @@ app.engine('hbs', hbs({
   // set defaultLayout
   defaultLayout: 'main',
   // set defaultLayout directory
-  layoutsDir: `${__dirname}/public/views/layouts/`,
+  layoutsDir: `${__dirname}/site/views/layouts/`,
   // set partial directory
-  partialsDir: `${__dirname}/public/views/partials`,
+  partialsDir: `${__dirname}/site/views/partials`,
 }));
 
-app.set('views', `${__dirname}/public/views`);
+app.set('views', `${__dirname}/site/views`);
 app.set('view engine', 'hbs');
 
-// Loads static assets from /public
-app.use(express.static(publicDir));
+// Loads static assets from /site
+app.use(express.static(siteDir));
 
 // Load paths
 app.use('/', routes(app));
