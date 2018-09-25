@@ -1,7 +1,14 @@
-// Construction page route
+// Construction routes
 
-export default (req, res) => {
-  res.render('homepage/index', {
-    title: 'Ascension',
-  });
+import { Router } from 'express';
+
+import * as controller from '../controllers/landingController';
+
+const router = new Router();
+
+export default () => {
+
+  router.get('/', controller.index);
+
+  return router;
 }

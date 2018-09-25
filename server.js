@@ -5,10 +5,8 @@ import express from 'express';
 import hbs from 'express-handlebars';
 import path from 'path';
 
-import home from './public/routes/home';
-import construction from './public/routes/construction';
+import routes from './public/routes/index';
 
-//const router = express.Router();
 const app = express();
 const publicDir = `${__dirname}/public`;
 
@@ -40,8 +38,7 @@ app.set('view engine', 'hbs');
 // Loads static assets from /public
 app.use(express.static(publicDir));
 
-// Load subdirectories before home
-app.use('/construction', construction);
-app.use('/', home);
+// Load paths
+app.use('/', routes(app));
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
