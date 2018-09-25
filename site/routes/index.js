@@ -4,14 +4,14 @@
 
 import { Router } from 'express';
 
-import landingRouter from './home';
+import siteRouter from './site';
 import constructionRouter from './construction';
 
 const router = new Router();
 
 export default (app) => {
   app.use('/construction', constructionRouter());
-  app.use('/', landingRouter());
-  
+  app.use('/', siteRouter());
+
   return router;
 }

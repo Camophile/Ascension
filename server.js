@@ -3,12 +3,18 @@
  */
 import express from 'express';
 import hbs from 'express-handlebars';
-import path from 'path';
+import bodyParser from 'body-parser';
 
 import routes from './site/routes/index';
 
 const app = express();
 const siteDir = `${__dirname}/site`;
+
+/**
+ * Express configuration.
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /*
  * view engine config
