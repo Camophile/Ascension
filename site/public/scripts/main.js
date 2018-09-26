@@ -1,5 +1,14 @@
 jQuery(document).ready(function( $ ) {
 
+  // Select menu item according to path
+  var path = window.location.pathname;
+  // var path = window.location.pathname.split("/").pop();
+
+  // console.log('main.js path', path, '\n');
+
+  var target = $(`.nav-menu a[href="${path}"]`);
+  target.closest('li').addClass('menu-active');
+
   // Back to top button
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {

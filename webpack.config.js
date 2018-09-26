@@ -12,7 +12,7 @@ const entryPoint = {
 module.exports = {
   entry: entryPoint,
   output: {
-    path: path.join(__dirname, 'site/dist'),
+    path: path.join(__dirname, 'site/public/dist'),
     filename: '[name].min.js',
   },
   module: {
