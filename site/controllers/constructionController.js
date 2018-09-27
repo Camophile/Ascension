@@ -1,6 +1,8 @@
-// Construction
+/**
+ * Renders the construction page
+ */
 
-export default (req, res) => {
+export function index(req, res) {
   res.render('construction/index', {
     title: 'Under Construction',
     layout: 'construction'

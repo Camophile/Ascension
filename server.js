@@ -3,14 +3,18 @@
  */
 import express from 'express';
 import hbs from 'express-handlebars';
-import path from 'path';
+import bodyParser from 'body-parser';
 
-import home from './public/routes/home';
-import construction from './public/routes/construction';
+import routes from './site/routes/index';
 
-//const router = express.Router();
 const app = express();
-const publicDir = `${__dirname}/public`;
+const siteDir = `${__dirname}/site`;
+
+/**
+ * Express configuration.
+ */
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 /*
  * view engine config
@@ -29,19 +33,18 @@ app.engine('hbs', hbs({
   // set defaultLayout
   defaultLayout: 'main',
   // set defaultLayout directory
-  layoutsDir: `${__dirname}/public/views/layouts/`,
+  layoutsDir: `${__dirname}/site/views/layouts/`,
   // set partial directory
-  partialsDir: `${__dirname}/public/views/partials`,
+  partialsDir: `${__dirname}/site/views/partials`,
 }));
 
-app.set('views', `${__dirname}/public/views`);
+app.set('views', `${__dirname}/site/views`);
 app.set('view engine', 'hbs');
 
-// Loads static assets from /public
-app.use(express.static(publicDir));
+// Loads static assets from /site
+app.use(express.static(siteDir));
 
-// Load subdirectories before home
-app.use('/construction', construction);
-app.use('/', home);
+// Load paths
+app.use('/', routes(app));
 
 app.listen(3000, () => console.log('Example app listening on port 3000!'));
